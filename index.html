@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+
+
+
+    <script>
+        let firstLetter = '';
+        let stringInputFromUser = '';
+
+        updateView();
+        function updateView() {
+            html =  /*HTML*/ `
+            <input type="text" id="stringInput" onchange="upperCaseOnFirstLetter(this.value)">
+            <div id=""> ${stringInputFromUser}</div>
+            `;
+            document.getElementById('app').innerHTML = html;
+        }
+
+        function upperCaseOnFirstLetter(text) {
+            stringInputFromUser = text.charAt(0).toUpperCase() + text.slice(1);
+            updateView();
+        }
+
+
+    </script>
+
+</body>
+
+</html>

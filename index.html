@@ -14,20 +14,25 @@
 
 
     <script>
-        let firstLetter = '';
-        let stringInputFromUser = '';
+        let stringInputFromUser;
+        let tempInput;
 
         updateView();
         function updateView() {
             html =  /*HTML*/ `
-            <input type="text" id="stringInput" onchange="upperCaseOnFirstLetter(this.value)">
-            <div id=""> ${stringInputFromUser}</div>
+            <input 
+            type="text" 
+            onchange="tempInput= this.value; upperCaseOnFirstLetter();"
+            value="${tempInput ?? ''}"
+            >
+            <div id=""> ${stringInputFromUser ?? ''}</div>
             `;
             document.getElementById('app').innerHTML = html;
         }
 
-        function upperCaseOnFirstLetter(text) {
-            stringInputFromUser = text.charAt(0).toUpperCase() + text.slice(1);
+        function upperCaseOnFirstLetter() {
+            stringInputFromUser = tempInput;
+            stringInputFromUser = stringInputFromUser.charAt(0).toUpperCase() + stringInputFromUser.slice(1);
             updateView();
         }
 
